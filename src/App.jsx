@@ -1,33 +1,96 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Button from './components/Button'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [inputValue, setInputValue] = useState("")
+  const [numbers, setNumbers] = useState([])
+  const [operators, setOperators] = useState([])
+
+  function updateInputValue(value) {
+    setInputValue(inputValue + value)
+  }
+
+  function addNumberAndOperator(number, operator) {
+    setNumbers([numbers + number])
+    setOperators([operators + operator])
+    setInputValue("")
+  }
+
+  function formatNumber(number) {
+    if (number.indexOf(".")) {
+      return parseFloat(number)
+    }
+    return parseInt(number)
+  }
+
+  function calculate() {
+    if (operators.length > 0) {
+      let result = numbers[0];
+
+      for (let i = 0; i < operators.length; i++) {
+        const operator = operators[i];
+        const nextNumber = formatNumber(numbers[i + 1]);
+
+        switch (operator) {
+          case "+":
+            result += nextNumber;
+            break;
+          case "-":
+            result -= nextNumber;
+            break;
+          case "*":
+            result *= nextNumber;
+            break;
+          case "/":
+            result /= nextNumber;
+            break;
+          default:
+            throw new Error(`Invalid operator: ${operator}`);
+        }
+      }
+
+      clear()
+      setInputValue(result)
+    }
+  }
+
+  function clear() {
+    setInputValue("")
+    setNumbers([])
+    setOperators([])
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="flex">
+        <Button label="C" onClick={() => clear()} />
+        <div className="w-9/12">{inputValue}</div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="flex">
+        <Button label="7" onClick={() => updateInputValue("7")} />
+        <Button label="8" onClick={() => updateInputValue("8")} />
+        <Button label="9" onClick={() => updateInputValue("9")} />
+        <Button label="x" onClick={() => addNumberAndOperator(inputValue, "*")} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div className="flex">
+        <Button label="4" onClick={() => updateInputValue("4")} />
+        <Button label="5" onClick={() => updateInputValue("5")} />
+        <Button label="6" onClick={() => updateInputValue("6")} />
+        <Button label="-" onClick={() => addNumberAndOperator(inputValue, "-")} />
+      </div>
+      <div className="flex">
+        <Button label="1" onClick={() => updateInputValue("1")} />
+        <Button label="2" onClick={() => updateInputValue("2")} />
+        <Button label="3" onClick={() => updateInputValue("3")} />
+        <Button label="+" onClick={() => addNumberAndOperator(inputValue, "+")} />
+      </div>
+      <div className="flex">
+        <Button label="." onClick={() => updateInputValue(".")} />
+        <Button label="0" onClick={() => updateInputValue("0")} />
+        <Button label="=" onClick={() => calculate()} />
+        <Button label="/" onClick={() => addNumberAndOperator(inputValue, "/")} />
+      </div>
     </>
   )
 }
