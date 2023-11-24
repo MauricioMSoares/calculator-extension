@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import Button from './components/Button'
+import { create, all } from 'mathjs'
+
+const math = create(all);
 
 function App() {
   const [inputValue, setInputValue] = useState("")
@@ -37,38 +40,26 @@ function App() {
   }
 
   function calculate() {
-    addNumber(inputValue)
-    
-    if (operators.length > 0) {
-      let result = numbers[0];
-
-      for (let i = 0; i < operators.length; i++) {
-        const operator = operators[i];
-        const nextNumber = formatNumber(numbers[i + 1]);
-
-        switch (operator) {
-          case "+":
-            result += nextNumber;
-            break;
-          case "-":
-            result -= nextNumber;
-            break;
-          case "*":
-            result *= nextNumber;
-            break;
-          case "/":
-            result /= nextNumber;
-            break;
-          default:
-            throw new Error(`Invalid operator: ${operator}`);
-        }
-      }
-
-      clear()
-      setInputValue(result.toString())
+    addNumber(inputValue);
+  
+    const expressionArray = [];
+    for (let i = 0; i < operators.length; i++) {
+      expressionArray.push(numbers[i], operators[i]);
     }
-  }
-
+    expressionArray.push(numbers[numbers.length - 1]);
+  
+    const expression = expressionArray.join(' ');
+    console.log('Expression:', expression);
+  
+    try {
+      const result = math.evaluate(expression);
+      clear();
+      setInputValue(result.toString());
+    } catch (error) {
+      console.error('Error evaluating expression:', error);
+    }
+  }  
+  
   function clear() {
     setInputValue("")
     setNumbers([])
