@@ -12,19 +12,33 @@ function App() {
   }
 
   function addNumberAndOperator(number, operator) {
-    setNumbers([numbers + number])
-    setOperators([operators + operator])
+    addNumber(number)
+    addOperator(operator)
     setInputValue("")
   }
 
+  function addOperator(operator) {
+    let updatedOperators = operators
+    updatedOperators.push(operator)
+    setOperators(updatedOperators)
+  }
+
+  function addNumber(number) {
+    let updatedNumbers = numbers
+    updatedNumbers.push(formatNumber(number))
+    setNumbers(updatedNumbers)
+  }
+
   function formatNumber(number) {
-    if (number.indexOf(".")) {
+    if (number.toString().includes(".")) {
       return parseFloat(number)
     }
     return parseInt(number)
   }
 
   function calculate() {
+    addNumber(inputValue)
+    
     if (operators.length > 0) {
       let result = numbers[0];
 
@@ -51,7 +65,7 @@ function App() {
       }
 
       clear()
-      setInputValue(result)
+      setInputValue(result.toString())
     }
   }
 
