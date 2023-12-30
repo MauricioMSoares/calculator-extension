@@ -69,20 +69,20 @@ function App() {
   return (
     <>
       <div className="flex">
-        <Button label="C" onClick={() => clear()} />
-        <div className="w-9/12">{inputValue}</div>
+        <Button label="C" onClick={() => clear()} extraClass="bg-red-300" />
+        <div className="result_div">{inputValue}</div>
       </div>
       <div className="flex">
         <Button label="7" onClick={() => updateInputValue("7")} />
         <Button label="8" onClick={() => updateInputValue("8")} />
         <Button label="9" onClick={() => updateInputValue("9")} />
-        <Button label="x" onClick={() => addNumberAndOperator(inputValue, "*")} />
+        <Button label="×" onClick={() => addNumberAndOperator(inputValue, "*")} />
       </div>
       <div className="flex">
         <Button label="4" onClick={() => updateInputValue("4")} />
         <Button label="5" onClick={() => updateInputValue("5")} />
         <Button label="6" onClick={() => updateInputValue("6")} />
-        <Button label="-" onClick={() => addNumberAndOperator(inputValue, "-")} />
+        <Button label="−" onClick={() => addNumberAndOperator(inputValue, "-")} />
       </div>
       <div className="flex">
         <Button label="1" onClick={() => updateInputValue("1")} />
@@ -94,7 +94,7 @@ function App() {
         <Button label="." onClick={() => updateInputValue(".")} />
         <Button label="0" onClick={() => updateInputValue("0")} />
         <Button label="=" onClick={() => calculate()} />
-        <Button label="/" onClick={() => addNumberAndOperator(inputValue, "/")} />
+        <Button label="÷" onClick={() => addNumberAndOperator(inputValue, "/")} />
       </div>
     </>
   )
