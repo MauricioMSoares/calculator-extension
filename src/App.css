@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+.expression_div {
+  @apply px-1 flex w-full justify-start items-center border-solid border-black border-2 rounded-lg text-base font-semibold;
+  height: 48px;
+}
+
 .result_div {
   @apply flex justify-center items-center border-solid border-black border-2 rounded-lg w-9/12 text-base font-semibold;
 }
