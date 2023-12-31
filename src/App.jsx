@@ -81,7 +81,7 @@ function App() {
 
   return (
     <>
-      <div className="expression_div">
+      <div className="expression_div" data-testid="expression_div">
         {inputText}
       </div>
       <div className="flex">
