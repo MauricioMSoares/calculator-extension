@@ -70,7 +70,7 @@ function App() {
     <>
       <div className="flex">
         <Button label="C" onClick={() => clear()} extraClass="bg-red-300" />
-        <div className="result_div">{inputValue}</div>
+        <div className="result_div" data-testid="result_div">{inputValue}</div>
       </div>
       <div className="flex">
         <Button label="7" onClick={() => updateInputValue("7")} />
