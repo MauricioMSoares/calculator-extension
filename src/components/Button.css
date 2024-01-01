@@ -1,5 +1,0 @@
-.calculator_button {
-    @apply flex justify-center items-center border-solid border-2 border-black text-base;
-    width: 48px;
-    height: 48px;
-}

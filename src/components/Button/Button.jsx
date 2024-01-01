@@ -12,4 +12,4 @@ function Button({ label, onClick, extraClass }) {
 	</>
 }
 
-export default Button
+export default Button;

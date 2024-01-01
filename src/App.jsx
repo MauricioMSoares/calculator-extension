@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './App.css';
-import Button from './components/Button';
+import Button from './components/Button/Button';
 import { create, all } from 'mathjs';
+import ToggleTheme from './components/ToggleTheme/ToggleTheme';
 
 const math = create(all);
 
@@ -67,6 +68,7 @@ function App() {
       const result = math.evaluate(expression);
       clear();
       setInputValue(result.toString());
+      setInputText(result.toString());
     } catch (error) {
       console.error('Error evaluating expression:', error);
     }
@@ -81,11 +83,14 @@ function App() {
 
   return (
     <>
+      <div className="toolbar">
+        <ToggleTheme />
+      </div>
       <div className="expression_div" data-testid="expression_div">
         {inputText}
       </div>
       <div className="flex">
-        <Button label="C" onClick={() => clear()} extraClass="bg-red-300" />
+        <Button label="C" onClick={() => clear()} extraClass="bg-red-300 dark:bg-red-700" />
         <div className="result_div" data-testid="result_div">{inputValue}</div>
       </div>
       <div className="flex">

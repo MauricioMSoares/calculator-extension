@@ -1,0 +1,11 @@
+.calculator_button {
+    @apply flex justify-center items-center border-solid border-2 border-gray-900 text-base dark:border-gray-500 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:border-cyan-600 dark:hover:border-cyan-500;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { vitest } from "vitest";
 import { act } from "react-dom/test-utils";
-import Button from "../src/components/Button";
+import Button from "../src/components/Button/Button";
 import "@testing-library/jest-dom";
 
 describe("Button", () => {

@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import App from "../src/App";
 import "@testing-library/jest-dom";
+import { beforeAll, vitest } from "vitest";
 
 describe("App result_div", () => {
   it("Should render number 5 when button 5 is clicked", () => {
@@ -30,6 +31,28 @@ describe("App result_div", () => {
     })
     expect(screen.getByTestId("result_div")).toHaveTextContent("")
   });
+
+  it("Should render 4 when equals is clicked", () => {
+    render(<App />)
+    act(() => {
+      const button = screen.getByText("2")
+      button.click()
+    })
+    act(() => {
+      const button = screen.getByText("+")
+      button.click()
+    })
+    act(() => {
+      const button = screen.getByText("2")
+      button.click()
+    })
+    act(() => {
+      const button = screen.getByText("=")
+      button.click()
+    })
+    expect(screen.getByTestId("result_div")).toHaveTextContent("4")
+    expect(screen.getByTestId("expression_div")).toHaveTextContent("4")
+  })
 });
 
 describe("App expression_div", () => {
