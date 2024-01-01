@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import App from "../src/App";
 import "@testing-library/jest-dom";
-import { beforeAll, vitest } from "vitest";
 
 describe("App result_div", () => {
   it("Should render number 5 when button 5 is clicked", () => {
