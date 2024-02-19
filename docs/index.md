@@ -14,6 +14,7 @@
 
 ### Running Tests
 <p>If you'd like to run the tests script present in this project, execute the following command in your bash terminal</p>
+
 ```bash
   npm run test
 ```
