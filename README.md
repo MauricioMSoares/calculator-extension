@@ -1,5 +1,5 @@
 # Calculator Extension
-Calculator Extension is a JavaScript extension built for Chrome Browser.
+Calculator Extension is a TypeScript extension built for Chrome Web Browser.
 <br>
 It supports basic math operations, those being adding, subtracting, multiplying and dividing.
 <br>

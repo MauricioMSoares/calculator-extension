@@ -1,10 +1,10 @@
 # Calculator Extension
-## Version 1.2.2
+## Version 1.3.0
 
 <p>
   Calculator Extension was created as a study project for me, 
   in order to learn about Chrome Extensions development and 
-  practice React, JavaScript and Jest/Vitest.
+  practice React, JavaScript, TypeScript and Jest/Vitest.
 </p>
 
 ### Known Issues

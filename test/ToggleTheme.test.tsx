@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { vitest } from "vitest";
 import ToggleTheme from "../src/components/ToggleTheme/ToggleTheme";
 import "@testing-library/jest-dom";
+import React from "react";
 
 test('toggle function is called when MoonIcon is clicked', () => {
   const mockToggle = vitest.fn();

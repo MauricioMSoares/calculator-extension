@@ -3,10 +3,11 @@ import { vitest } from "vitest";
 import { act } from "react-dom/test-utils";
 import Button from "../src/components/Button/Button";
 import "@testing-library/jest-dom";
+import React from "react";
 
 describe("Button", () => {
 	it("Should have the label 1", () => {
-		render(<Button label="1"/>);
+		render(<Button label="1" onClick={() => {}}/>);
 		const button = screen.getByTestId("button");
 
 		expect(button).toHaveTextContent("1");

@@ -3,21 +3,24 @@ import './App.css';
 import Button from './components/Button/Button';
 import { create, all } from 'mathjs';
 import ToggleTheme from './components/ToggleTheme/ToggleTheme';
+import React from 'react';
+
+type Operator = "+" | "-" | "*" | "/"
 
 const math = create(all);
 
-function App() {
+const App = () => {
   const [inputText, setInputText] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const [numbers, setNumbers] = useState([]);
-  const [operators, setOperators] = useState([]);
+  const [numbers, setNumbers] = useState<number[]>([]);
+  const [operators, setOperators] = useState<Operator[]>([]);
 
-  function updateInputValue(value) {
+  const updateInputValue = (value: string) => {
     setInputValue(inputValue + value)
     setInputText(inputText + value)
   }
 
-  function addNumberAndOperator(number, operator) {
+  const addNumberAndOperator = (number: string, operator: Operator) => {
     addNumber(number)
     addOperator(operator)
     setInputValue("")
@@ -33,29 +36,29 @@ function App() {
     )
   }
 
-  function addOperator(operator) {
+  const addOperator = (operator: Operator) => {
     let updatedOperators = operators
     updatedOperators.push(operator)
     setOperators(updatedOperators)
   }
 
-  function addNumber(number) {
+  const addNumber = (number: string) => {
     let updatedNumbers = numbers
     updatedNumbers.push(formatNumber(number))
     setNumbers(updatedNumbers)
   }
 
-  function formatNumber(number) {
+  const formatNumber = (number: string) => {
     if (number.toString().includes(".")) {
       return parseFloat(number)
     }
     return parseInt(number)
   }
 
-  function calculate() {
+  const calculate = () => {
     addNumber(inputValue);
 
-    const expressionArray = [];
+    const expressionArray: (number | Operator)[] = [];
     for (let i = 0; i < operators.length; i++) {
       expressionArray.push(numbers[i], operators[i]);
     }
@@ -74,7 +77,7 @@ function App() {
     }
   }
 
-  function clear() {
+  const clear = () => {
     setInputText("")
     setInputValue("")
     setNumbers([])

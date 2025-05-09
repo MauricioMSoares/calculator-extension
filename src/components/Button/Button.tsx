@@ -1,6 +1,13 @@
+import React from 'react'
 import './Button.css'
 
-function Button({ label, onClick, extraClass }) {
+interface ButtonProps {
+	label: string
+	onClick: (label: string) => void
+	extraClass?: string
+}
+
+const Button = ({ label, onClick, extraClass }: ButtonProps) => {
 	return <>
 		<button
 			onClick={() => onClick(label)}
