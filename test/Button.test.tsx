@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { vitest } from "vitest";
-import { act } from "react-dom/test-utils";
 import Button from "../src/components/Button/Button";
 import "@testing-library/jest-dom";
 import React from "react";
+import userEvent from "@testing-library/user-event";
 
 describe("Button", () => {
 	it("Should have the label 1", () => {
@@ -13,13 +13,12 @@ describe("Button", () => {
 		expect(button).toHaveTextContent("1");
 	});
 
-	it("Should be called when clicked", () => {
+	it("Should be called when clicked", async () => {
 		const onClick = vitest.fn();
 		render(<Button label="1" onClick={onClick}/>);
+
 		const button = screen.getByTestId("button");
-		act(() => {
-			button.click();
-		})
+		await userEvent.click(button)
 
 		expect(onClick).toHaveBeenCalled();
 	});

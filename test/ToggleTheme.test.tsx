@@ -1,12 +1,14 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { vitest } from "vitest";
 import ToggleTheme from "../src/components/ToggleTheme/ToggleTheme";
 import "@testing-library/jest-dom";
 import React from "react";
+import userEvent from "@testing-library/user-event";
 
-test('toggle function is called when MoonIcon is clicked', () => {
+test('toggle function is called when MoonIcon is clicked', async () => {
   const mockToggle = vitest.fn();
   render(<ToggleTheme />, { wrapper: ({ children }) => <div onClick={mockToggle}>{children}</div> });
-  fireEvent.click(screen.getByTestId('toggle_theme')); 
+
+  await userEvent.click(screen.getByTestId('toggle_theme')); 
   expect(mockToggle).toHaveBeenCalled();
 });
