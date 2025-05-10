@@ -1,15 +1,16 @@
 import React from "react"
+import Button from "../Button/Button";
 
 interface ButtonRowProps {
-    amount: number
-    labels: string[]
-    actions: Array<(label: string) => void>
+    buttons: Array<{ label: string; action: (label: string) => void }>
 }
 
-const ButtonRow = ({amount, labels, actions}: ButtonRowProps) => {
-    return <>
-        
-    </>
+const ButtonRow = ({buttons}: ButtonRowProps) => {
+    return <div className="flex">
+        {buttons.map(button => (
+            <Button label={button.label} onClick={button.action} />
+        ))}
+    </div>
 }
 
-export default ButtonRow
+export default ButtonRow;

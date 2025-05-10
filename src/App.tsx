@@ -4,6 +4,7 @@ import Button from './components/Button/Button';
 import { create, all } from 'mathjs';
 import ToggleTheme from './components/ToggleTheme/ToggleTheme';
 import React from 'react';
+import ButtonRow from './components/ButtonRow/ButtonRow';
 
 type Operator = "+" | "-" | "*" | "/"
 
@@ -96,30 +97,30 @@ const App = () => {
         <Button label="C" onClick={() => clear()} extraClass="bg-red-300 dark:bg-red-700" />
         <div className="result_div" data-testid="result_div">{inputValue}</div>
       </div>
-      <div className="flex">
-        <Button label="7" onClick={() => updateInputValue("7")} />
-        <Button label="8" onClick={() => updateInputValue("8")} />
-        <Button label="9" onClick={() => updateInputValue("9")} />
-        <Button label="×" onClick={() => addNumberAndOperator(inputValue, "*")} />
-      </div>
-      <div className="flex">
-        <Button label="4" onClick={() => updateInputValue("4")} />
-        <Button label="5" onClick={() => updateInputValue("5")} />
-        <Button label="6" onClick={() => updateInputValue("6")} />
-        <Button label="−" onClick={() => addNumberAndOperator(inputValue, "-")} />
-      </div>
-      <div className="flex">
-        <Button label="1" onClick={() => updateInputValue("1")} />
-        <Button label="2" onClick={() => updateInputValue("2")} />
-        <Button label="3" onClick={() => updateInputValue("3")} />
-        <Button label="+" onClick={() => addNumberAndOperator(inputValue, "+")} />
-      </div>
-      <div className="flex">
-        <Button label="." onClick={() => updateInputValue(".")} />
-        <Button label="0" onClick={() => updateInputValue("0")} />
-        <Button label="=" onClick={() => calculate()} />
-        <Button label="÷" onClick={() => addNumberAndOperator(inputValue, "/")} />
-      </div>
+      <ButtonRow buttons={[
+        { label: "7", action: () => updateInputValue("7") },
+        { label: "8", action: () => updateInputValue("8") },
+        { label: "9", action: () => updateInputValue("9") },
+        { label: "×", action: () => addNumberAndOperator(inputValue, "*") },
+      ]} />
+      <ButtonRow buttons={[
+        { label: "4", action: () => updateInputValue("4") },
+        { label: "5", action: () => updateInputValue("5") },
+        { label: "6", action: () => updateInputValue("6") },
+        { label: "−", action: () => addNumberAndOperator(inputValue, "-") },
+      ]} />
+      <ButtonRow buttons={[
+        { label: "1", action: () => updateInputValue("1") },
+        { label: "2", action: () => updateInputValue("2") },
+        { label: "3", action: () => updateInputValue("3") },
+        { label: "+", action: () => addNumberAndOperator(inputValue, "+") },
+      ]} />
+      <ButtonRow buttons={[
+        { label: ".", action: () => updateInputValue(".") },
+        { label: "0", action: () => updateInputValue("0") },
+        { label: "=", action: () => calculate() },
+        { label: "÷", action: () => addNumberAndOperator(inputValue, "/") },
+      ]} />
     </>
   )
 }

@@ -1,5 +1,5 @@
 # Calculator Extension
-## Version 1.3.0
+## Version 1.3.1
 
 <p>
   Calculator Extension was created as a study project for me, 
